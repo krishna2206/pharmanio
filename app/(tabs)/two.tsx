@@ -1,10 +1,22 @@
-import { Text, View } from "react-native";
+import { ThemedCard, ThemedText, ThemedView } from "@/components";
 
 export default function TabTwoScreen() {
   return (
-    <View className="flex-1 items-center justify-center bg-gray-100 p-6">
-      <Text className="text-2xl font-bold text-purple-600 mb-4">Tab Two</Text>
-      <Text className="text-gray-700 text-center">This tab is also styled with Tailwind classes.</Text>
-    </View>
+    <ThemedView className="flex-1 items-center justify-center p-6">
+      <ThemedText className="text-secondary text-2xl font-bold mb-4">
+        Tab Two
+      </ThemedText>
+      
+      <ThemedCard className="w-full max-w-sm">
+        <ThemedText className="text-center mb-4">
+          This demonstrates the power of semantic color names:
+        </ThemedText>
+        
+        <ThemedText className="text-primary mb-2">• text-primary</ThemedText>
+        <ThemedText className="text-secondary mb-2">• text-secondary</ThemedText>
+        <ThemedText className="text-on-surface mb-2">• text-on-surface</ThemedText>
+        <ThemedText className="text-on-surface-variant">• text-on-surface-variant</ThemedText>
+      </ThemedCard>
+    </ThemedView>
   );
 }

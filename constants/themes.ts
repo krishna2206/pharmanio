@@ -1,0 +1,58 @@
+import type { ColorDefinitions } from "@/types/colors";
+import { vars } from "nativewind";
+
+export const colorDefinitions: ColorDefinitions = {
+  light: {
+    "--color-primary": "#0891b2",
+    "--color-secondary": "#9333ea",
+    "--color-background": "#ffffff",
+    "--color-surface": "#f3f4f6",
+    "--color-surface-variant": "#e5e7eb",
+    "--color-on-background": "#1f2937",
+    "--color-on-surface": "#1f2937",
+    "--color-on-surface-variant": "#6b7280",
+    "--color-border": "#e5e7eb",
+    "--color-tab-active": "#0891b2",
+    "--color-tab-inactive": "#9ca3af",
+    "--color-error": "#ef4444",
+    "--color-warning": "#f59e0b",
+    "--color-success": "#22c55e",
+    "--color-info": "#3b82f6",
+    "--color-on-primary": "#ffffff",
+    "--color-on-secondary": "#ffffff",
+    "--color-on-error": "#ffffff",
+    "--color-disabled": "#9ca3af",
+    "--color-on-disabled": "#6b7280",
+    "--color-outline": "#d1d5db",
+    "--color-shadow": "rgba(0, 0, 0, 0.1)",
+  },
+  dark: {
+    "--color-primary": "#06b6d4",
+    "--color-secondary": "#a855f7",
+    "--color-background": "#111827",
+    "--color-surface": "#1f2937",
+    "--color-surface-variant": "#374151",
+    "--color-on-background": "#f9fafb",
+    "--color-on-surface": "#f9fafb",
+    "--color-on-surface-variant": "#9ca3af",
+    "--color-border": "#374151",
+    "--color-tab-active": "#06b6d4",
+    "--color-tab-inactive": "#6b7280",
+    "--color-error": "#f87171",
+    "--color-warning": "#fbbf24",
+    "--color-success": "#4ade80",
+    "--color-info": "#60a5fa",
+    "--color-on-primary": "#111827",
+    "--color-on-secondary": "#111827",
+    "--color-on-error": "#111827",
+    "--color-disabled": "#4b5563",
+    "--color-on-disabled": "#6b7280",
+    "--color-outline": "#4b5563",
+    "--color-shadow": "rgba(0, 0, 0, 0.3)",
+  },
+};
+
+export const themes = {
+  light: vars(colorDefinitions.light),
+  dark: vars(colorDefinitions.dark),
+};

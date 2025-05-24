@@ -1,3 +1,5 @@
+import { useThemeColors } from '@/hooks/useThemeColors';
+import { ThemeColors } from '@/types/colors';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Tabs } from 'expo-router';
 import React from 'react';
@@ -10,8 +12,23 @@ function TabBarIcon(props: {
 }
 
 export default function TabLayout() {
+  const colors: ThemeColors = useThemeColors();
+  
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: colors.tabActive,
+        tabBarInactiveTintColor: colors.tabInactive,
+        tabBarStyle: {
+          backgroundColor: colors.surface,
+          borderTopColor: colors.border,
+        },
+        headerStyle: {
+          backgroundColor: colors.surface,
+        },
+        headerTintColor: colors.onSurface,
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
