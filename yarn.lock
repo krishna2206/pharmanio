@@ -3707,6 +3707,11 @@ expo-asset@~11.1.5:
     "@expo/image-utils" "^0.7.4"
     expo-constants "~17.1.5"
 
+expo-blur@~14.1.4:
+  version "14.1.4"
+  resolved "https://registry.yarnpkg.com/expo-blur/-/expo-blur-14.1.4.tgz#d246c0a224ce63321d022edfc0e6a8c5fa2cc865"
+  integrity sha512-55P9tK/RjJZEcu2tU7BqX3wmIOrGMOOkmHztJMMws+ZGHzvtjnPmT7dsQxhOU9vPj77oHnKetYHU2sik3iBcCw==
+
 expo-constants@~17.1.5, expo-constants@~17.1.6:
   version "17.1.6"
   resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-17.1.6.tgz#a31b019216f7f7bb4907aeffa2d6bf856751985e"

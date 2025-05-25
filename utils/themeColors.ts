@@ -13,7 +13,11 @@ export function getThemeColors(theme: 'light' | 'dark'): ThemeColors {
       .replace('--color-', '')
       .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
     
-    colors[camelCaseKey as keyof ThemeColors] = value;
+    // Convert RGB string to hex format
+    const rgbValues = value.split(' ').map((v: string) => parseInt(v.trim()));
+    const hexColor = `#${rgbValues.map((v: number) => v.toString(16).padStart(2, '0')).join('')}`;
+    
+    colors[camelCaseKey as keyof ThemeColors] = hexColor;
   });
   
   return colors;
