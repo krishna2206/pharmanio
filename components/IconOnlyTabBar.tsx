@@ -12,10 +12,13 @@ interface TabConfig {
 }
 
 const tabConfig: TabConfig = {
-  index: { 
+  index: {
     icon: 'home'
   },
-  two: { 
+  demo: {
+    icon: 'eye'
+  },
+  settings: {
     icon: 'cog'
   },
 };
@@ -54,10 +57,10 @@ export function IconOnlyTabBar({ state, navigation }: BottomTabBarProps) {
             className="flex-1 items-center justify-center py-4"
             style={{ paddingBottom: insets.bottom + extraPaddingBottom }}
           >
-            <FontAwesome 
-              name={config.icon} 
+            <FontAwesome
+              name={config.icon}
               size={28}
-              color={isFocused ? colors.tabActive : colors.tabInactive} 
+              color={isFocused ? colors.tabActive : colors.tabInactive}
             />
           </Pressable>
         );

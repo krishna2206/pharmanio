@@ -1,15 +1,17 @@
-import { IconOnlyTabBar } from '@/components';
+import { BlurTabBar } from '@/components';
 import { useThemeColors } from '@/hooks/useThemeColors';
+import { useTranslation } from '@/hooks/useTranslation';
 import { ThemeColors } from '@/types/colors';
 import { Tabs } from 'expo-router';
 import React from 'react';
 
 export default function TabLayout() {
   const colors: ThemeColors = useThemeColors();
-  
+  const { t } = useTranslation();
+
   return (
     <Tabs
-      tabBar={props => <IconOnlyTabBar {...props} />}
+      tabBar={props => <BlurTabBar {...props} />}
       screenOptions={{
         headerStyle: {
           backgroundColor: colors.surface,
@@ -20,13 +22,19 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
+          title: t('common.home'),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="demo"
         options={{
-          title: 'Tab Two',
+          title: t('common.demo'),
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: t('common.settings'),
         }}
       />
     </Tabs>

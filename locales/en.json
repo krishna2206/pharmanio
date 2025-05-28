@@ -1,0 +1,32 @@
+{
+  "common": {
+    "home": "Home",
+    "demo": "Demo", 
+    "settings": "Settings",
+    "hello": "Hello Expo !",
+    "notFound": "This screen doesn't exist.",
+    "goHome": "Go to home screen!"
+  },
+  "home": {
+    "subtitle": "This is a quickstart Expo project with tabs navigation and theme support."
+  },
+  "demo": {
+    "title": "Components demo",
+    "subtitle": "This page show how does the components look",
+    "cardTitle": "This demonstrates the power of semantic color names:",
+    "itemText": "Item #{{number}} - This content will scroll under the tab bar"
+  },
+  "settings": {
+    "themeSettings": "Theme Settings",
+    "lightTheme": "Light Theme",
+    "darkTheme": "Dark Theme",
+    "systemDefault": "System Default",
+    "currentTheme": "Current theme: {{theme}}",
+    "languageSettings": "Language Settings",
+    "english": "English",
+    "french": "French",
+    "systemLanguage": "System Language",
+    "currentLanguage": "Current language: {{language}}",
+    "languageSource": "Language source: {{source}}"
+  }
+}

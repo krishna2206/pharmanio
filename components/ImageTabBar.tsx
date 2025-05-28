@@ -1,4 +1,5 @@
 import { useThemeColors } from '@/hooks/useThemeColors';
+import { useTranslation } from '@/hooks/useTranslation';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React, { useState } from 'react';
 import { Animated, Image, ImageSourcePropType, Pressable, View } from 'react-native';
@@ -8,30 +9,37 @@ interface TabConfig {
   [key: string]: {
     icon: ImageSourcePropType;
     iconActive?: ImageSourcePropType;
-    label: string;
+    labelKey: string;
     fallbackColor?: string;
   };
 }
 
 const tabConfig: TabConfig = {
-  index: { 
+  index: {
     icon: require('@/assets/images/3d-house.png'),
     iconActive: require('@/assets/images/3d-house.png'),
-    label: 'Home',
+    labelKey: 'common.home',
     fallbackColor: '#FF6B6B'
   },
-  two: { 
+  demo: {
+    icon: require('@/assets/images/3d-components.png'),
+    iconActive: require('@/assets/images/3d-components.png'),
+    labelKey: 'common.demo',
+    fallbackColor: '#FF6B6B'
+  },
+  settings: {
     icon: require('@/assets/images/3d-cog.png'),
     iconActive: require('@/assets/images/3d-cog.png'),
-    label: 'Settings',
+    labelKey: 'common.settings',
     fallbackColor: '#4ECDC4'
   },
 };
 
 export function ImageTabBar({ state, navigation }: BottomTabBarProps) {
   const colors = useThemeColors();
+  const { t } = useTranslation();
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
-  const [animations] = useState(() => 
+  const [animations] = useState(() =>
     state.routes.reduce((acc, route) => {
       acc[route.key] = {
         scale: new Animated.Value(1),
@@ -40,7 +48,7 @@ export function ImageTabBar({ state, navigation }: BottomTabBarProps) {
       return acc;
     }, {} as Record<string, { scale: Animated.Value; translateY: Animated.Value }>)
   );
-  
+
   const animateTab = (routeKey: string) => {
     const animation = animations[routeKey];
     if (!animation) return;
@@ -67,7 +75,7 @@ export function ImageTabBar({ state, navigation }: BottomTabBarProps) {
   };
 
   return (
-    <View style={{ 
+    <View style={{
       position: 'absolute',
       bottom: 0,
       left: 0,
@@ -77,9 +85,9 @@ export function ImageTabBar({ state, navigation }: BottomTabBarProps) {
       paddingBottom: 20,
       pointerEvents: 'box-none',
     }}>
-      <View 
-        style={{ 
-          flexDirection: 'row', 
+      <View
+        style={{
+          flexDirection: 'row',
           backgroundColor: colors.surface,
           borderWidth: 1,
           borderColor: colors.border + '40',
@@ -93,7 +101,6 @@ export function ImageTabBar({ state, navigation }: BottomTabBarProps) {
           shadowOpacity: 0.15,
           shadowRadius: 8,
           height: 75,
-          
         }}
       >
         {state.routes.map((route, index) => {
@@ -162,7 +169,7 @@ export function ImageTabBar({ state, navigation }: BottomTabBarProps) {
                     }}
                   />
                 ) : (
-                  <Image 
+                  <Image
                     source={iconSource}
                     style={{
                       width: 65,
@@ -173,15 +180,15 @@ export function ImageTabBar({ state, navigation }: BottomTabBarProps) {
                   />
                 )}
               </Animated.View>
-              <ThemedText 
+              <ThemedText
                 className="text-sm font-medium"
-                style={{ 
+                style={{
                   color: isFocused ? colors.tabActive : colors.tabInactive,
                   position: 'absolute',
                   bottom: 5,
                 }}
               >
-                {config.label}
+                {t(config.labelKey)}
               </ThemedText>
             </Pressable>
           );

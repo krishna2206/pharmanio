@@ -1,4 +1,5 @@
 import { useThemeColors } from '@/hooks/useThemeColors';
+import { useTranslation } from '@/hooks/useTranslation';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
@@ -8,22 +9,24 @@ import { ThemedText } from './ThemedText';
 interface TabConfig {
   [key: string]: {
     icon: React.ComponentProps<typeof FontAwesome>['name'];
-    label: string;
+    labelKey: string;
   };
 }
 
 const tabConfig: TabConfig = {
-  index: { icon: 'home', label: 'Home' },
-  two: { icon: 'cog', label: 'Settings' },
+  index: { icon: 'home', labelKey: 'common.home' },
+  demo: { icon: 'eye', labelKey: 'common.demo' },
+  settings: { icon: 'cog', labelKey: 'common.settings' },
 };
 
 export function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const colors = useThemeColors();
-  
+  const { t } = useTranslation();
+
   return (
-    <View 
-      style={{ 
-        flexDirection: 'row', 
+    <View
+      style={{
+        flexDirection: 'row',
         backgroundColor: colors.surface,
         borderTopWidth: 1,
         borderTopColor: colors.border,
@@ -65,18 +68,18 @@ export function CustomTabBar({ state, descriptors, navigation }: BottomTabBarPro
               backgroundColor: isFocused ? colors.primary + '20' : 'transparent',
             }}
           >
-            <FontAwesome 
-              name={config.icon} 
+            <FontAwesome
+              name={config.icon}
               size={24}
-              color={isFocused ? colors.tabActive : colors.tabInactive} 
+              color={isFocused ? colors.tabActive : colors.tabInactive}
             />
-            <ThemedText 
+            <ThemedText
               className="text-xs mt-1 font-medium"
-              style={{ 
-                color: isFocused ? colors.tabActive : colors.tabInactive 
+              style={{
+                color: isFocused ? colors.tabActive : colors.tabInactive
               }}
             >
-              {config.label}
+              {t(config.labelKey)}
             </ThemedText>
           </Pressable>
         );

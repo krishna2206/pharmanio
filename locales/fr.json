@@ -1,0 +1,32 @@
+{
+  "common": {
+    "home": "Accueil",
+    "demo": "Démo",
+    "settings": "Paramètres",
+    "hello": "Bonjour Expo !",
+    "notFound": "Cette page n'existe pas.",
+    "goHome": "Aller à l'accueil !"
+  },
+  "home": {
+    "subtitle": "Il s'agit d'un projet Expo de démarrage rapide avec navigation par onglets et support de thème."
+  },
+  "demo": {
+    "title": "Démo des composants",
+    "subtitle": "Cette page montre à quoi ressemblent les composants",
+    "cardTitle": "Ceci démontre la puissance des noms de couleurs sémantiques :",
+    "itemText": "Élément #{{number}} - Ce contenu défilera sous la barre d'onglets"
+  },
+  "settings": {
+    "themeSettings": "Paramètres de thème",
+    "lightTheme": "Thème clair",
+    "darkTheme": "Thème sombre",
+    "systemDefault": "Par défaut du système",
+    "currentTheme": "Thème actuel : {{theme}}",
+    "languageSettings": "Paramètres de langue",
+    "english": "Anglais",
+    "french": "Français",
+    "systemLanguage": "Langue du système",
+    "currentLanguage": "Langue actuelle : {{language}}",
+    "languageSource": "Source de la langue : {{source}}"
+  }
+}
