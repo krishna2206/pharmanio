@@ -10,7 +10,6 @@
 - **Multi-language Support**: Available in French, English, and Malagasy
 - **Dark/Light Theme**: Automatic theme switching with manual override options
 - **Contact Integration**: Direct phone calling to pharmacy numbers
-- **Offline-ready Architecture**: Robust error handling and graceful degradation
 
 ## 📱 Screenshots
 
