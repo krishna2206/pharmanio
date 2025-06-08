@@ -1,3 +1,4 @@
+import { PermissionProvider } from '@/contexts/PermissionContext';
 import { ThemeProvider, useTheme } from '@/contexts/ThemeContext';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
@@ -38,16 +39,19 @@ export default function RootLayout() {
 function RootLayoutNav() {
   return (
     <ThemeProvider>
-      <RootStatusBar />
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+      <PermissionProvider>
+        <RootStatusBar />
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="map" options={{ headerShown: false }} />
+        </Stack>
+      </PermissionProvider>
     </ThemeProvider>
   );
 }
 
 function RootStatusBar() {
   const { isDark } = useTheme();
-  
+
   return <StatusBar style={isDark ? 'light' : 'dark'} />;
 }

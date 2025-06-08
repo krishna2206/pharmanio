@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, Text } from 'react-native';
 
 type ThemedButtonProps = React.ComponentProps<typeof Pressable> & {
-  variant?: 'primary' | 'secondary' | 'surface';
+  variant?: 'primary' | 'secondary' | 'surface' | 'warning';
   textClassName?: string;
   children: React.ReactNode;
 };
@@ -22,6 +22,8 @@ export function ThemedButton({
         return 'bg-secondary';
       case 'surface':
         return 'bg-surface border border-border';
+      case 'warning':
+        return 'bg-warning';
       default:
         return 'bg-primary';
     }
@@ -31,6 +33,8 @@ export function ThemedButton({
     switch (variant) {
       case 'surface':
         return 'text-on-surface';
+      case 'warning':
+        return 'text-on-primary';
       default:
         return 'text-on-primary';
     }

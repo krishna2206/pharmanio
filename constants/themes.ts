@@ -5,57 +5,57 @@ import { vars } from "nativewind";
  * Color definitions for light and dark themes.
  * 
  * Light theme hex colors:
- * - primary: #ea5547
- * - secondary: #51d9a0
- * - background: #ffffff
- * - surface: #f8fafc
- * - surface-variant: #f1f5f9
- * - on-background: #0f172a
- * - on-surface: #1e293b
- * - on-surface-variant: #64748b
- * - border: #e2e8f0
- * - tab-active: #ea5547
- * - tab-inactive: #94a3b8
- * - error: #dc2626
- * - warning: #d97706
+ * - primary: #4de090
+ * - secondary: #cb56d0
+ * - background: #FFFFFF
+ * - surface: #F8FAFC
+ * - surface-variant: #F1F5F9
+ * - on-background: #0F172A
+ * - on-surface: #1E293B
+ * - on-surface-variant: #64748B
+ * - border: #E2E8F0
+ * - tab-active: #4de090
+ * - tab-inactive: #94A3B8
+ * - error: #DC2626
+ * - warning: #D97706
  * - success: #059669
- * - info: #2563eb
- * - on-primary: #ffffff
- * - on-secondary: #ffffff
- * - on-error: #ffffff
- * - disabled: #94a3b8
- * - on-disabled: #64748b
- * - outline: #cbd5e1
- * - shadow: #000000
+ * - info: #2563EB
+ * - on-primary: #FFFFFF
+ * - on-secondary: #FFFFFF
+ * - on-error: #FFFFFF
+ * - disabled: #94A3B8
+ * - on-disabled: #64748B
+ * - outline: #CBD5E1
+ * - shadow: rgba(0, 0, 0, 0.1)
  * 
  * Dark theme hex colors:
- * - primary: #faa59e
- * - secondary: #a2eece
- * - background: #0f172a
- * - surface: #1e293b
+ * - primary: #4de090
+ * - secondary: #e6a3e9
+ * - background: #0F172A
+ * - surface: #1E293B
  * - surface-variant: #334155
- * - on-background: #f8fafc
- * - on-surface: #f1f5f9
- * - on-surface-variant: #cbd5e1
+ * - on-background: #F8FAFC
+ * - on-surface: #F1F5F9
+ * - on-surface-variant: #CBD5E1
  * - border: #475569
- * - tab-active: #faa59e
- * - tab-inactive: #64748b
- * - error: #ef4444
- * - warning: #f59e0b
- * - success: #10b981
- * - info: #3b82f6
- * - on-primary: #0f172a
- * - on-secondary: #0f172a
- * - on-error: #ffffff
- * - disabled: #64748b
- * - on-disabled: #94a3b8
- * - outline: #64748b
- * - shadow: #000000
+ * - tab-active: #4de090
+ * - tab-inactive: #64748B
+ * - error: #EF4444
+ * - warning: #F59E0B
+ * - success: #10B981
+ * - info: #3B82F6
+ * - on-primary: #0F172A
+ * - on-secondary: #0F172A
+ * - on-error: #FFFFFF
+ * - disabled: #64748B
+ * - on-disabled: #94A3B8
+ * - outline: #64748B
+ * - shadow: rgba(0, 0, 0, 0.4)
  */
 export const colorDefinitions: ColorDefinitions = {
   light: {
-    "--color-primary": "234 85 71",
-    "--color-secondary": "81 217 160",
+    "--color-primary": "77 224 144",
+    "--color-secondary": "203 86 208",
     "--color-background": "255 255 255",
     "--color-surface": "248 250 252",
     "--color-surface-variant": "241 245 249",
@@ -63,7 +63,7 @@ export const colorDefinitions: ColorDefinitions = {
     "--color-on-surface": "30 41 59",
     "--color-on-surface-variant": "100 116 139",
     "--color-border": "226 232 240",
-    "--color-tab-active": "234 85 71",
+    "--color-tab-active": "77 224 144",
     "--color-tab-inactive": "148 163 184",
     "--color-error": "220 38 38",
     "--color-warning": "217 119 6",
@@ -78,8 +78,8 @@ export const colorDefinitions: ColorDefinitions = {
     "--color-shadow": "0 0 0",
   },
   dark: {
-    "--color-primary": "250 165 158",
-    "--color-secondary": "162 238 206",
+    "--color-primary": "77 224 144",
+    "--color-secondary": "230 163 233",
     "--color-background": "15 23 42",
     "--color-surface": "30 41 59",
     "--color-surface-variant": "51 65 85",
@@ -87,7 +87,7 @@ export const colorDefinitions: ColorDefinitions = {
     "--color-on-surface": "241 245 249",
     "--color-on-surface-variant": "203 213 225",
     "--color-border": "71 85 105",
-    "--color-tab-active": "250 165 158",
+    "--color-tab-active": "77 224 144",
     "--color-tab-inactive": "100 116 139",
     "--color-error": "239 68 68",
     "--color-warning": "245 158 11",

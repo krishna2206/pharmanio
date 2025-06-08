@@ -1,23 +1,66 @@
 {
   "common": {
     "home": "Home",
-    "demo": "Demo", 
     "settings": "Settings",
-    "hello": "Hello Expo !",
     "notFound": "This screen doesn't exist.",
     "goHome": "Go to home screen!"
   },
   "home": {
-    "subtitle": "This is a quickstart Expo project with tabs navigation and theme support."
+    "pharmaciesOnDuty": "Pharmacies on duty from\n{{startDate}} to {{endDate}}",
+    "userLocation": "Pharmacies on duty\nin your area",
+    "permission": {
+      "message": "Allow location access to see pharmacies near you"
+    },
+    "error": {
+      "title": "Loading Error",
+      "message": "Unable to load pharmacies. Check your internet connection and try again.",
+      "database": {
+        "title": "Database Problem",
+        "message": "A temporary database issue has occurred. Please try again in a few minutes."
+      },
+      "server": {
+        "title": "Server Error",
+        "message": "A server problem has occurred. Please try again later."
+      },
+      "network": {
+        "title": "Connection Problem",
+        "message": "Check your internet connection and try again."
+      },
+      "client": {
+        "title": "Request Error",
+        "message": "An error occurred during the request. Please try again."
+      },
+      "unknown": {
+        "title": "Unknown Error",
+        "message": "An unexpected error has occurred. Please try again."
+      }
+    },
+    "empty": {
+      "title": "No Pharmacies on Duty",
+      "message": "No pharmacies on duty are available at the moment."
+    }
   },
-  "demo": {
-    "title": "Components demo",
-    "subtitle": "This page show how does the components look",
-    "cardTitle": "This demonstrates the power of semantic color names:",
-    "itemText": "Item #{{number}} - This content will scroll under the tab bar"
+  "pharmacy": {
+    "contact": "Contact",
+    "route": "Route",
+    "phoneError": "Unable to open phone number",
+    "phoneErrorTitle": "Error",
+    "name": "{{name}} Pharmacy"
+  },
+  "map": {
+    "invalidPharmacy": "Invalid pharmacy data",
+    "permissionDenied": "Permission Denied",
+    "locationRequired": "Location permission is required to show directions",
+    "startNavigation": "Start navigation",
+    "getDirections": "Get Directions",
+    "hide": "Hide",
+    "show": "Show"
   },
   "settings": {
     "themeSettings": "Theme Settings",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
     "lightTheme": "Light Theme",
     "darkTheme": "Dark Theme",
     "systemDefault": "System Default",
@@ -25,8 +68,25 @@
     "languageSettings": "Language Settings",
     "english": "English",
     "french": "French",
+    "malagasy": "Malagasy",
     "systemLanguage": "System Language",
     "currentLanguage": "Current language: {{language}}",
-    "languageSource": "Language source: {{source}}"
+    "languageSource": "Language source: {{source}}",
+    "appInfo": "App Information",
+    "version": "Version",
+    "developer": "Developer",
+    "projectLink": "Project Link",
+    "viewOnGitHub": "View on GitHub"
+  },
+  "location": {
+    "permissionDenied": "Location permission denied",
+    "permissionRequired": "Location permission is required",
+    "requestPermission": "Grant Location Access",
+    "locationNotAvailable": "Location not available",
+    "currentLocation": "Current Location",
+    "gettingLocation": "Getting your location...",
+    "locationError": "Error getting location",
+    "permissionGranted": "Location permission granted",
+    "permissionRestricted": "Location permission restricted"
   }
 }

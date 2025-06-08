@@ -5,8 +5,9 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 
 import en from '@/locales/en.json';
 import fr from '@/locales/fr.json';
+import mg from '@/locales/mg.json';
 
-export type SupportedLanguage = 'en' | 'fr';
+export type SupportedLanguage = 'en' | 'fr' | 'mg';
 
 interface Translations {
   [key: string]: any;
@@ -15,27 +16,26 @@ interface Translations {
 const translations: Record<SupportedLanguage, Translations> = {
   en,
   fr,
+  mg,
 };
 
-// Function to detect system language and map it to supported languages
 function detectSystemLanguage(): SupportedLanguage {
   const deviceLocales = Localization.getLocales();
   const primaryLocale = deviceLocales[0];
   
   if (!primaryLocale) {
-    return 'en';
+    return 'fr';
   }
   
-  // Extract language code (e.g., 'fr' from 'fr-FR' or 'fr-CA')
   const languageCode = primaryLocale.languageCode?.toLowerCase();
   
-  // Map language codes to supported languages
   switch (languageCode) {
     case 'fr':
       return 'fr';
-    case 'en':
+    case 'mg':
+      return 'mg';
     default:
-      return 'en';
+      return 'fr';
   }
 }
 
@@ -74,8 +74,8 @@ export const useI18nStore = create<I18nState>()(
           if (value && typeof value === 'object' && k in value) {
             value = value[k];
           } else {
-            // Fallback to English if translation not found
-            value = translations.en;
+            // Fallback to French if translation not found
+            value = translations.fr;
             for (const k of keys) {
               if (value && typeof value === 'object' && k in value) {
                 value = value[k];

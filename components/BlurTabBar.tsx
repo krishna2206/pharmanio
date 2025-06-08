@@ -1,9 +1,9 @@
 import { useTheme } from '@/contexts/ThemeContext';
 import { useThemeColors } from '@/hooks/useThemeColors';
 import { useTranslation } from '@/hooks/useTranslation';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { BlurView } from 'expo-blur';
+import { Gear, House } from 'phosphor-react-native';
 import React from 'react';
 import { Platform, Pressable, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -12,22 +12,18 @@ import { ThemedView } from './ThemedView';
 
 interface TabConfig {
   [key: string]: {
-    icon: React.ComponentProps<typeof FontAwesome>['name'];
+    icon: React.ComponentType<any>;
     labelKey: string;
   };
 }
 
 const tabConfig: TabConfig = {
   index: {
-    icon: 'home',
+    icon: House,
     labelKey: 'common.home'
   },
-  demo: {
-    icon: 'eye',
-    labelKey: 'common.demo'
-  },
   settings: {
-    icon: 'cog',
+    icon: Gear,
     labelKey: 'common.settings'
   },
 };
@@ -78,12 +74,11 @@ export function BlurTabBar({ state, navigation }: BottomTabBarProps) {
               className="flex-1 items-center justify-center py-2"
             >
               <View className="items-center">
-                <FontAwesome
-                  name={config.icon}
-                  size={24}
-                  color={isFocused ? colors.primary : colors.onBackground + '99'}
-                  className="mb-1"
-                />
+                {React.createElement(config.icon, {
+                  size: 24,
+                  color: isFocused ? colors.primary : colors.onBackground + '99',
+                  weight: isFocused ? 'fill' : 'regular'
+                })}
                 <ThemedText
                   className="text-xs"
                   style={{ color: isFocused ? colors.primary : colors.onBackground + '99' }}

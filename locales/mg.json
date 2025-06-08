@@ -1,0 +1,92 @@
+{
+  "common": {
+    "home": "Fandraisana",
+    "settings": "Fandrindrana",
+    "notFound": "Tsy misy io pejy io.",
+    "goHome": "Mankany amin'ny fandraisana!"
+  },
+  "home": {
+    "pharmaciesOnDuty": "Fivarotam-panafody miasa manomboka\n{{startDate}} ka hatramin'ny {{endDate}}",
+    "userLocation": "Fivarotam-panafody miasa\nao amin'ny faritra misy anao",
+    "permission": {
+      "message": "Omeo alalana ny toerana mba hahitana ny fivarotam-panafody eo akaikinao"
+    },
+    "error": {
+      "title": "Tsy afaka nampidirina",
+      "message": "Tsy afaka nampidirina ny fivarotam-panafody. Jereo ny fifandraisana amin'ny Internet ary andramo indray.",
+      "database": {
+        "title": "Olana amin'ny tahiry angon-drakitra",
+        "message": "Nisy olana vetivety tamin'ny tahiry angon-drakitra. Andramo indray afaka minitra vitsivitsy."
+      },
+      "server": {
+        "title": "Tsy fetezana ny mpizara",
+        "message": "Nisy olana tamin'ny mpizara. Andramo indray aoriana."
+      },
+      "network": {
+        "title": "Olana amin'ny fifandraisana",
+        "message": "Jereo ny fifandraisana amin'ny Internet ary andramo indray."
+      },
+      "client": {
+        "title": "Tsy fetezana ny fangatahana",
+        "message": "Nisy tsy fetezana nandritra ny fangatahana. Andramo indray."
+      },
+      "unknown": {
+        "title": "Tsy fetezana tsy fantatra",
+        "message": "Nisy tsy fetezana tsy nampoizina. Andramo indray."
+      }
+    },
+    "empty": {
+      "title": "Tsy misy fivarotam-panafody miasa",
+      "message": "Tsy misy fivarotam-panafody miasa amin'izao fotoana izao."
+    }
+  },
+  "pharmacy": {
+    "contact": "Fifandraisana",
+    "route": "Lalana",
+    "phoneError": "Tsy afaka nanokatra ny laharan-telefaona",
+    "phoneErrorTitle": "Tsy fetezana",
+    "name": "Pharmacie {{name}}"
+  },
+  "map": {
+    "invalidPharmacy": "Angon-drakitra fivarotam-panafody tsy mety",
+    "permissionDenied": "Nolavina ny alalana",
+    "locationRequired": "Ilaina ny alalana amin'ny toerana mba hanehoana ny toro-làlana",
+    "startNavigation": "Atombohy ny fitaterana",
+    "getDirections": "Makà toro-làlana",
+    "hide": "Afeno",
+    "show": "Asehoy"
+  },
+  "settings": {
+    "themeSettings": "Fandrindrana loko",
+    "light": "Mazava",
+    "dark": "Maizina",
+    "system": "Rafitra",
+    "lightTheme": "Loko mazava",
+    "darkTheme": "Loko maizina",
+    "systemDefault": "Araka ny rafitra",
+    "currentTheme": "Loko ankehitriny: {{theme}}",
+    "languageSettings": "Fandrindrana fiteny",
+    "english": "Anglisy",
+    "french": "Frantsay",
+    "malagasy": "Malagasy",
+    "systemLanguage": "Fitenin'ny rafitra",
+    "currentLanguage": "Fiteny ankehitriny: {{language}}",
+    "languageSource": "Loharanon'ny fiteny: {{source}}",
+    "appInfo": "Fampahalalana momba ny rindrambaiko",
+    "version": "Dikan-kevitra",
+    "developer": "Mpamorona",
+    "projectLink": "Rohim-barotra",
+    "viewOnGitHub": "Jereo ao amin'ny GitHub"
+  },
+  "location": {
+    "permissionDenied": "Nolavina ny alalana amin'ny toerana",
+    "permissionRequired": "Ilaina ny alalana amin'ny toerana",
+    "requestPermission": "Omeo alalana ny fidirana amin'ny toerana",
+    "locationNotAvailable": "Tsy misy ny toerana",
+    "currentLocation": "Toerana ankehitriny",
+    "gettingLocation": "Mitady ny toerana misy anao...",
+    "locationError": "Tsy fetezana tamin'ny fitadiavana ny toerana",
+    "permissionGranted": "Nomena ny alalana amin'ny toerana",
+    "permissionRestricted": "Voafetra ny alalana amin'ny toerana"
+  }
+}
