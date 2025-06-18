@@ -3,7 +3,10 @@
     "home": "Home",
     "settings": "Settings",
     "notFound": "This screen doesn't exist.",
-    "goHome": "Go to home screen!"
+    "goHome": "Go to home screen!",
+    "offline": "Offline",
+    "online": "Online",
+    "cached": "Cached Data"
   },
   "home": {
     "pharmaciesOnDuty": "Pharmacies on duty from\n{{startDate}} to {{endDate}}",
@@ -15,29 +18,43 @@
       "title": "Loading Error",
       "message": "Unable to load pharmacies. Check your internet connection and try again.",
       "database": {
-        "title": "Database Problem",
-        "message": "A temporary database issue has occurred. Please try again in a few minutes."
+        "title": "Database Error",
+        "message": "There's an issue with our database. Please try again later."
       },
       "server": {
         "title": "Server Error",
-        "message": "A server problem has occurred. Please try again later."
+        "message": "Our servers are experiencing issues. Please try again later."
       },
       "network": {
-        "title": "Connection Problem",
-        "message": "Check your internet connection and try again."
+        "title": "Network Error",
+        "message": "Please check your internet connection and try again."
       },
       "client": {
         "title": "Request Error",
-        "message": "An error occurred during the request. Please try again."
+        "message": "There was an issue with your request. Please try again."
       },
       "unknown": {
         "title": "Unknown Error",
-        "message": "An unexpected error has occurred. Please try again."
+        "message": "An unexpected error occurred. Please try again."
+      },
+      "offline_no_cache": {
+        "title": "No Offline Data",
+        "message": "You're offline and no cached data is available. Please connect to internet to load pharmacies."
+      },
+      "network_using_cache": {
+        "title": "Using Cached Data",
+        "message": "Unable to fetch latest data. Showing cached results."
       }
     },
     "empty": {
       "title": "No Pharmacies on Duty",
       "message": "No pharmacies on duty are available at the moment."
+    },
+    "offline": {
+      "title": "You're Offline",
+      "message": "You're offline. Showing cached pharmacy data.",
+      "noCacheTitle": "No Offline Data",
+      "noCacheMessage": "No cached data available. Please connect to internet to load pharmacies."
     }
   },
   "pharmacy": {

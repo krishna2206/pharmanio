@@ -3,7 +3,10 @@
     "home": "Accueil",
     "settings": "Paramètres",
     "notFound": "Cette page n'existe pas.",
-    "goHome": "Aller à l'accueil !"
+    "goHome": "Aller à l'accueil !",
+    "offline": "Hors ligne",
+    "online": "En ligne",
+    "cached": "Données en cache"
   },
   "home": {
     "pharmaciesOnDuty": "Pharmacies de garde du\n{{startDate}} au {{endDate}}",
@@ -33,11 +36,25 @@
       "unknown": {
         "title": "Erreur inconnue",
         "message": "Une erreur inattendue s'est produite. Veuillez réessayer."
+      },
+      "offline_no_cache": {
+        "title": "Aucune donnée hors ligne",
+        "message": "Vous êtes hors ligne et aucune donnée en cache n'est disponible. Veuillez vous connecter à internet pour charger les pharmacies."
+      },
+      "network_using_cache": {
+        "title": "Utilisation des données en cache",
+        "message": "Impossible de récupérer les dernières données. Affichage des résultats en cache."
       }
     },
     "empty": {
       "title": "Aucune pharmacie de garde",
       "message": "Aucune pharmacie de garde n'est disponible pour le moment."
+    },
+    "offline": {
+      "title": "Vous êtes hors ligne",
+      "message": "Vous êtes hors ligne. Affichage des données de pharmacie en cache.",
+      "noCacheTitle": "Aucune donnée hors ligne",
+      "noCacheMessage": "Aucune donnée en cache disponible. Veuillez vous connecter à internet pour charger les pharmacies."
     }
   },
   "pharmacy": {

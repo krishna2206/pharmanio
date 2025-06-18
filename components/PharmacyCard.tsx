@@ -1,5 +1,6 @@
 import { ThemedCard } from '@/components/ThemedCard';
 import { ThemedText } from '@/components/ThemedText';
+import { useNetwork } from '@/hooks';
 import { useLocation } from '@/hooks/useLocation';
 import { useThemeColors } from '@/hooks/useThemeColors';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -20,12 +21,17 @@ export function PharmacyCard({ pharmacy, onPress, currentCity }: PharmacyCardPro
   const colors = useThemeColors();
   const { t } = useTranslation();
   const { getCurrentLocation } = useLocation();
+  const { isOnline } = useNetwork();
   const [travelEstimate, setTravelEstimate] = useState<{ walk: number; drive: number } | null>(null);
   const [isCalculating, setIsCalculating] = useState(false);
 
   useEffect(() => {
     const calculateRoute = async () => {
-      // Only calculate if pharmacy has coordinates and is in current city
+      if (!isOnline) {
+        setTravelEstimate(null);
+        return;
+      }
+
       if (!pharmacy.latitude || !pharmacy.longitude || !currentCity || pharmacy.city.id !== currentCity.id) {
         return;
       }
@@ -58,17 +64,14 @@ export function PharmacyCard({ pharmacy, onPress, currentCity }: PharmacyCardPro
         }
       } catch (error) {
         console.error('Error calculating travel time:', error);
-        setTravelEstimate({
-          walk: Math.floor(Math.random() * 20) + 5,
-          drive: Math.floor(Math.random() * 10) + 2,
-        });
+        setTravelEstimate(null);
       } finally {
         setIsCalculating(false);
       }
     };
 
     calculateRoute();
-  }, [pharmacy.latitude, pharmacy.longitude, currentCity]);
+  }, [pharmacy.latitude, pharmacy.longitude, currentCity, isOnline]);
 
   const handlePhoneCall = (phoneNumber: string) => {
     const formattedNumber = phoneNumber.replace(/\s+/g, '');
@@ -141,8 +144,8 @@ export function PharmacyCard({ pharmacy, onPress, currentCity }: PharmacyCardPro
           </View>
         )}
 
-        {/* Time Estimates and Directions - Only show if current city is available and pharmacy has coordinates */}
-        {pharmacy.latitude && pharmacy.longitude && currentCity && pharmacy.city.id === currentCity.id && (
+        {/* Time Estimates and Directions - Only show if current city is available and pharmacy has coordinates and when online */}
+        {isOnline && pharmacy.latitude && pharmacy.longitude && currentCity && pharmacy.city.id === currentCity.id && (
           <View className="flex-row justify-between items-center pt-4 border-t border-border/50">
             <View className="flex-row items-center">
               <View className="flex-row items-center mr-4">

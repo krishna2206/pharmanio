@@ -6,6 +6,7 @@ import { PharmacyCard, ThemedText, ThemedView } from "@/components";
 import LoadingScreen from "@/components/LoadingScreen";
 import { useLocationPermissions } from "@/contexts/PermissionContext";
 import { useThemeColors } from "@/hooks";
+import { useNetwork } from '@/hooks/useNetwork';
 import { useOnDutyPharmacies } from "@/hooks/useOnDutyPharmacies";
 import { useTranslation } from "@/hooks/useTranslation";
 import { cityService } from '@/services/cityService';
@@ -15,13 +16,16 @@ export default function HomeScreen() {
   const { t } = useTranslation();
   const colors = useThemeColors();
   const { isRequestingPermission, hasLocationPermission } = useLocationPermissions();
+  const { isOnline, isOffline } = useNetwork();
   const {
+    pharmacyData,
     pharmacies,
     dutyPeriod,
     isLoading,
     error,
+    isUsingCache,
     fetchOnDutyPharmacies,
-  } = useOnDutyPharmacies({});
+  } = useOnDutyPharmacies({ useCache: true });
 
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [currentCity, setCurrentCity] = useState<City | null>(null);
@@ -29,17 +33,25 @@ export default function HomeScreen() {
   useEffect(() => {
     const getCurrentCity = async () => {
       try {
+        if (!isOnline) {
+          setCurrentCity(null);
+          return;
+        }
+
         const city = await cityService.getCurrentCityFromLocation();
         setCurrentCity(city);
       } catch (err) {
         console.error('Error getting current city:', err);
+        setCurrentCity(null);
       }
     };
 
     if (hasLocationPermission) {
       getCurrentCity();
+    } else {
+      setCurrentCity(null);
     }
-  }, [hasLocationPermission]);
+  }, [hasLocationPermission, isOnline]);
 
   const groupedPharmacies = useMemo(() => {
     const groups: { [cityName: string]: Pharmacy[] } = {};
@@ -93,6 +105,11 @@ export default function HomeScreen() {
         return {
           title: t('home.error.client.title'),
           message: t('home.error.client.message')
+        };
+      case 'offline_no_cache':
+        return {
+          title: t('home.error.offline_no_cache.title'),
+          message: t('home.error.offline_no_cache.message')
         };
       default:
         return {
@@ -160,11 +177,28 @@ export default function HomeScreen() {
     );
   };
 
+  const OfflineIndicator = () => {
+    if (isOnline && !isUsingCache) return null;
+
+    return (
+      <View className="bg-warning/20 border-warning border p-4 mb-4 rounded-lg flex-row items-center">
+        <WarningCircle size={16} color={colors.warning} />
+        <ThemedText className="text-warning text-sm flex-1 ml-2">
+          {isOffline
+            ? t('home.offline.message')
+            : t('home.error.network_using_cache.message')
+          }
+        </ThemedText>
+      </View>
+    );
+  };
+
   if (isRequestingPermission || isLoading) {
     return <LoadingScreen />
   }
 
-  if (error) {
+  // Error screen
+  if (error && !pharmacyData && error) {
     const errorMessage = getErrorMessage();
     return (
       <ThemedView className="flex-1 justify-center items-center p-6">
@@ -186,6 +220,7 @@ export default function HomeScreen() {
     );
   }
 
+  // List empty
   if (pharmacies.length === 0) {
     return (
       <ThemedView className="flex-1 justify-center items-center p-6">
@@ -206,7 +241,12 @@ export default function HomeScreen() {
         renderItem={renderItem}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={{ padding: 16 }}
-        ListHeaderComponent={renderHeader}
+        ListHeaderComponent={
+          <>
+            {renderHeader()}
+            <OfflineIndicator />
+          </>
+        }
         showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl

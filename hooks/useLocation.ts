@@ -1,4 +1,5 @@
 import { useLocationPermissions } from '@/contexts/PermissionContext';
+import { useNetwork } from '@/hooks/useNetwork';
 import * as Location from 'expo-location';
 import { useCallback, useState } from 'react';
 
@@ -17,6 +18,7 @@ export interface UseLocationReturn {
 
 export function useLocation(): UseLocationReturn {
   const { hasLocationPermission, requestLocationPermission } = useLocationPermissions();
+  const { isOnline } = useNetwork();
   
   const [currentLocation, setCurrentLocation] = useState<LocationCoordinates | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +40,10 @@ export function useLocation(): UseLocationReturn {
   }, [requestLocationPermission]);
 
   const getCurrentLocation = useCallback(async (): Promise<LocationCoordinates | null> => {
+    if (!isOnline) {
+      return null;
+    }
+
     try {
       setIsLoading(true);
       setError(null);
@@ -70,7 +76,7 @@ export function useLocation(): UseLocationReturn {
     } finally {
       setIsLoading(false);
     }
-  }, [hasLocationPermission, requestPermission]);
+  }, [hasLocationPermission, requestPermission, isOnline]);
 
   return {
     currentLocation,

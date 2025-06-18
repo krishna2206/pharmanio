@@ -3,7 +3,10 @@
     "home": "Fandraisana",
     "settings": "Fandrindrana",
     "notFound": "Tsy misy io pejy io.",
-    "goHome": "Mankany amin'ny fandraisana!"
+    "goHome": "Mankany amin'ny fandraisana!",
+    "offline": "Tsy mifandray",
+    "online": "Mifandray",
+    "cached": "Angon-drakitra voatahiry"
   },
   "home": {
     "pharmaciesOnDuty": "Fivarotam-panafody miasa manomboka\n{{startDate}} ka hatramin'ny {{endDate}}",
@@ -33,11 +36,25 @@
       "unknown": {
         "title": "Tsy fetezana tsy fantatra",
         "message": "Nisy tsy fetezana tsy nampoizina. Andramo indray."
+      },
+      "offline_no_cache": {
+        "title": "Tsy misy angon-drakitra tsy mifandray",
+        "message": "Tsy mifandray ianao ary tsy misy angon-drakitra voatahiry. Mifandraisa amin'ny Internet mba hampidirana ny fivarotam-panafody."
+      },
+      "network_using_cache": {
+        "title": "Mampiasa angon-drakitra voatahiry",
+        "message": "Tsy afaka naka ny angon-drakitra farany. Mampiseho ny vokatra voatahiry."
       }
     },
     "empty": {
       "title": "Tsy misy fivarotam-panafody miasa",
       "message": "Tsy misy fivarotam-panafody miasa amin'izao fotoana izao."
+    },
+    "offline": {
+      "title": "Tsy mifandray ianao",
+      "message": "Tsy mifandray ianao. Mampiseho ny angon-drakitra fivarotam-panafody voatahiry.",
+      "noCacheTitle": "Tsy misy angon-drakitra tsy mifandray",
+      "noCacheMessage": "Tsy misy angon-drakitra voatahiry. Mifandraisa amin'ny Internet mba hampidirana ny fivarotam-panafody."
     }
   },
   "pharmacy": {
