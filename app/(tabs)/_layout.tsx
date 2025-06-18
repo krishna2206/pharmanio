@@ -18,8 +18,15 @@ export default function TabLayout() {
         tabBar={props => <BlurTabBar {...props} />}
         screenOptions={{
           headerShown: false,
-          headerStyle: { backgroundColor: colors.surface, },
+          headerStyle: {
+            backgroundColor: colors.surface,
+          },
           headerTintColor: colors.onSurface,
+          animation: 'fade',
+          // This option is needed to avoid the white flash on Android
+          sceneStyle: {
+            backgroundColor: colors.background,
+          }
         }}
       >
         <Tabs.Screen

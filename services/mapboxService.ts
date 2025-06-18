@@ -1,42 +1,67 @@
-export interface TravelEstimate {
-  walkTime: number; // in minutes
-  driveTime: number; // in minutes
-  walkDistance: number; // in kilometers
-  driveDistance: number; // in kilometers
-}
-
-export interface RouteStep {
-  instruction: string;
-  distance: number; // in meters
-  duration: number; // in seconds
-  maneuver: {
-    type: string;
-    modifier?: string;
-    bearing_after?: number;
-    bearing_before?: number;
-    location: [number, number];
-  };
-}
-
-export interface RouteData {
-  coordinates: number[][];
-  distance: number; // in meters
-  duration: number; // in seconds
-  steps?: RouteStep[];
-}
+import type {
+  MapboxGeocodingResponse,
+  RouteData,
+  TravelEstimate
+} from '@/types/mapbox';
 
 class MapboxService {
   private readonly accessToken: string;
   private readonly baseUrl: string;
   private readonly directionsApiUrl: string;
+  private readonly geocodingApiUrl: string;
 
   constructor() {
     this.accessToken = process.env.EXPO_PUBLIC_MAPBOX_ACCESS_TOKEN || '';
     this.baseUrl = process.env.EXPO_PUBLIC_MAPBOX_BASE_URL || 'https://api.mapbox.com';
     this.directionsApiUrl = `${this.baseUrl}/directions/v5/mapbox`;
+    this.geocodingApiUrl = `${this.baseUrl}/search/geocode/v6`;
     
     if (!this.accessToken) {
       console.warn('Mapbox access token not found');
+    }
+  }
+
+  async reverseGeocode(
+    latitude: number,
+    longitude: number,
+    options: {
+      types?: string[];
+      country?: string;
+      language?: string;
+      limit?: number;
+    } = {}
+  ): Promise<MapboxGeocodingResponse | null> {
+    if (!this.accessToken) {
+      console.warn('Mapbox access token not available for reverse geocoding');
+      return null;
+    }
+
+    try {
+      const params = new URLSearchParams({
+        longitude: longitude.toString(),
+        latitude: latitude.toString(),
+        access_token: this.accessToken,
+      });
+
+      // Add optional parameters
+      if (options.types?.length) {
+        params.append('types', options.types[0]); // Use first type only for simplicity
+      }
+      if (options.country) params.append('country', options.country);
+      if (options.language) params.append('language', options.language);
+      if (options.limit) params.append('limit', options.limit.toString());
+
+      const response = await fetch(`${this.geocodingApiUrl}/reverse?${params}`);
+      
+      if (!response.ok) {
+        console.error('Mapbox reverse geocoding API error:', response.status, response.statusText);
+        return null;
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error in Mapbox reverse geocoding:', error);
+      return null;
     }
   }
 

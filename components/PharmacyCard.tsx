@@ -141,8 +141,8 @@ export function PharmacyCard({ pharmacy, onPress, currentCity }: PharmacyCardPro
           </View>
         )}
 
-        {/* Time Estimates and Directions - Only show if current city is available */}
-        {currentCity && pharmacy.city.id === currentCity.id && (
+        {/* Time Estimates and Directions - Only show if current city is available and pharmacy has coordinates */}
+        {pharmacy.latitude && pharmacy.longitude && currentCity && pharmacy.city.id === currentCity.id && (
           <View className="flex-row justify-between items-center pt-4 border-t border-border/50">
             <View className="flex-row items-center">
               <View className="flex-row items-center mr-4">
